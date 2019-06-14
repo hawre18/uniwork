@@ -15,6 +15,8 @@ Route::get('/', function(){
 });
 
 Route::resource('food-lounges', 'FoodLoungesController');
+Route::get('food-lounges-delete/{id}', 'FoodLoungesController@delete')->name('food-lounges.delete');
 Route::get('foods-delete/{id}', 'FoodController@delete')->name('foods.delete');
 Route::resource('foods', 'FoodController');
+Route::resource('profiles', 'ProfileController');
 

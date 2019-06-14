@@ -52,9 +52,9 @@
                                                     <th>عملیات</th>
                                                 </tr>
                                                 <tr>
-                                                    <td><input type="text" name="title" placeholder="غذا" ></td>
-                                                    <td><input type="number" name="price" placeholder="قیمت"></td>
-                                                    <td><input type="text" name="description" placeholder="توضیحات" ></td>
+                                                    <td><input type="text" name="title" placeholder="غذا" value="{{ old('title') }}" ></td>
+                                                    <td><input type="number" name="price" placeholder="قیمت" value="{{ old('price') }}" ></td>
+                                                    <td><input type="text" name="description" placeholder="توضیحات" value="{{ old('description') }}" ></td>
                                                     <td><input type="submit" name="submit" value="درج" class="btn btn-primary waves-effect"></td>
                                                 </tr>
                                             </table>

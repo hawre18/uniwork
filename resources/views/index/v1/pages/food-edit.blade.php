@@ -17,9 +17,9 @@
                                     <i class="fas fa-home"></i> خانه</a>
                             </li>
                             <li class="breadcrumb-item bcrumb-2">
-                                <a href="javascript:void(0);">فروشگاه</a>
+                                <a href="javascript:void(0);">سلف</a>
                             </li>
-                            <li class="breadcrumb-item active">محصولات</li>
+                            <li class="breadcrumb-item active">ویرایش غذا</li>
                         </ul>
                     </div>
                 </div>
@@ -32,10 +32,9 @@
                             <div class="row">
                                 <div class="col-md col-sm">
                                     <div class="product-grid">
-                                        <form action="{{ route('foods.update',$foods->id)}}">
-                                            @method('GET')
+                                        <form method="post" action="{{ route('foods.update', $food->id)}}">
+                                            <input type="hidden" name="_method" value="put" />
                                             @csrf
-
                                             @if ($errors->any())
                                                 <div class="alert alert-danger">
                                                     <ul>
@@ -53,15 +52,12 @@
                                                     <th>توضیحات</th>
                                                     <th>عملیات</th>
                                                 </tr>
-                                                @foreach($foods as $food)
                                                 <tr>
-                                                    <td><input type="text" name="title" placeholder="غذا" value={{$food->id}}></td>
-                                                    <td><input type="number" name="price" placeholder="قیمت" value={{$food->title}}></td>
-                                                    <td><input type="text" name="description" placeholder="توضیحات" value={{$food->price}}></td>
-                                                    <td><input type="text" name="description" placeholder="توضیحات" value={{$food->description}}></td>
+                                                    <td><input type="text" name="title" placeholder="غذا" value="{{ $food->title }}" ></td>
+                                                    <td><input type="number" name="price" placeholder="قیمت" value="{{ $food->price }}" ></td>
+                                                    <td><input type="text" name="description" placeholder="توضیحات" value="{{ $food->description }}" ></td>
                                                     <td><input type="submit" name="submit" value="ویرایش" class="btn btn-primary waves-effect"></td>
                                                 </tr>
-                                                    @endforeach
                                             </table>
                                         </form>
                                     </div>

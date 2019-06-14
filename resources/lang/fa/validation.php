@@ -146,6 +146,10 @@ return [
     |
     */
 
-
+    'attributes' => [
+        'title' => 'عنوان',
+        'description' => 'توضیحات',
+        'price' => 'قیمت'
+    ],
 
 ];

@@ -16,6 +16,10 @@
                         </li>
                     </ul>
                 </div>
+                <div class="new record">
+                    <a href="{{ route('foods.create') }}"> رکورد جدید</a>
+                    <i class="material-icons">add</i>
+                </div>
                 <div class="tableBody">
                     <div class="table-responsive">
                         <table class="table table-hover dashboard-task-infos ">
@@ -41,12 +45,8 @@
                                         <td>{{ $food->created_at }}</td>
                                         <td>{{ $food->updated_at}}</td>
                                         <td>
-                                                <a href="{{action('FoodController@edit',$food['id'])}}" class="btn tblActnBtn"><i class="material-icons">mode_edit</i></a>
-                                            <form action="{{ route('foods.delete', $food->id)}}" method="post" style="float: right;">
-                                                @csrf
-                                                @method('GET')
-                                            <button class="btn tblActnBtn"><i class="material-icons">delete</i></button>
-                                            </form>
+                                                <a href="{{ route('foods.edit', ['food'=> $food->id]) }}" class="btn tblActnBtn"><i class="material-icons">mode_edit</i></a>
+                                                <a href="{{ route('foods.delete', $food->id)}}" class="btn tblActnBtn"><i class="material-icons">mode_delete</i></a>
                                         </td>
                                     </tr>
 
@@ -62,5 +62,27 @@
         <!-- Browser Usage -->
         <!-- #END# Browser Usage -->
     </div>
+@endsection
+@section('custom_scripts')
+    <script type="text/javascript">
+    Command: toastr["success"]("Are you the six fingered man?")
 
+    toastr.options = {
+    "closeButton": false,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": false,
+    "positionClass": "toast-top-full-width",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+    }
+    </script>
 @endsection

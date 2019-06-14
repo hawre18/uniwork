@@ -15,6 +15,7 @@ class FoodLoungesController extends Controller
     public function index()
     {
         $food_lounges = FoodLounge::paginate(10);
+        return view('index.v1.pages.food-lounges-index', compact('food_lounges'));
     }
 
     /**
@@ -40,7 +41,7 @@ class FoodLoungesController extends Controller
             $food_lounge->title = $request->title;
             $food_lounge->description = $request->description;
             $food_lounge->save();
-            return $food_lounge;
+            return redirect()->route('food-lounges.index');
         }catch (\Exception $e){
             return 'خطا: ' . $e->getMessage();
         }
@@ -52,10 +53,9 @@ class FoodLoungesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(FoodLounge $food_lounge)
     {
-        $food_lounge = FoodLounge::findOrFail($id);
-        return $food_lounge;
+        return view('index.v1.pages.food-lounges-show');
     }
 
     /**
@@ -64,9 +64,10 @@ class FoodLoungesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(FoodLounge $food_lounge)
     {
-        //
+        return view('index.v1.pages.food-lounges-edit', compact('food_lounge'));
+
     }
 
     /**
@@ -76,9 +77,20 @@ class FoodLoungesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,FoodLounge $food_lounge)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|unique:food_lounges,title,' .$food_lounge->id .'|max:255|min:3',
+            'description' => 'required|min:3',
+        ]);
+        try{
+            $food_lounge->title = $request->title;
+            $food_lounge->description = $request->description;
+            $food_lounge->save();
+            return redirect()->route('food-lounges.index');
+        } catch (\Exception $e){
+            return 'خطا'.$e;
+        }
     }
 
     /**
@@ -87,7 +99,7 @@ class FoodLoungesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
         //
     }

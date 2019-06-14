@@ -284,5 +284,6 @@
     </div>
     <script src="{{ asset('assets/index/v1/js/app.min.js') }}"></script>
     <script src="{{ asset('assets/index/v1/js/admin.js') }}"></script>
+    @yield('custom_scripts')
 </body>
 </html>

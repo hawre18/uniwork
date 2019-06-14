@@ -41,9 +41,7 @@ class FoodController extends Controller
         'title' => 'required|unique:foods|max:255',
         'price' => 'required|max:5000|min:1000|numeric',
         'description' => 'required',
-
-
-    ]);
+        ]);
         try{
             $food = new Food;
             $food->title = $request->title;
@@ -52,7 +50,6 @@ class FoodController extends Controller
             $food->save();
             return redirect()->route('foods.index');
         } catch (\Exception $e){
-
             return 'خطا'.$e;
         }
 
@@ -64,9 +61,8 @@ class FoodController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Food $food)
     {
-        $food = Food::findOrFail($id);
         return $food;
     }
 
@@ -76,11 +72,9 @@ class FoodController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Food $food)
     {
-        $food = Food::find($id);
-        return view('index.v1.pages.food-edit',compact('food','id'))->with(['foods' => $food]);
-
+        return view('index.v1.pages.food-edit', compact('food'));
 
     }
 
@@ -93,7 +87,21 @@ class FoodController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|unique:foods,title,' . $id .'|max:255',
+            'price' => 'required|max:5000|min:1000|numeric',
+            'description' => 'required',
+        ]);
+        try{
+            $food = Food::find($id);
+            $food->title = $request->title;
+            $food->price = $request->price;
+            $food->description = $request->description;
+            $food->save();
+            return redirect()->route('foods.index');
+        } catch (\Exception $e){
+            return 'خطا'.$e;
+        }
     }
 
     public function delete($id)
