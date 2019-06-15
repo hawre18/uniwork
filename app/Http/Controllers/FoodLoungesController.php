@@ -101,8 +101,9 @@ class FoodLoungesController extends Controller
      */
     public function delete($id)
     {
-        //
-    }
+        $food = FoodLounge::find($id);
+        $food->delete();
+        return redirect()->route('food-lounges.index');    }
 
 
 }
