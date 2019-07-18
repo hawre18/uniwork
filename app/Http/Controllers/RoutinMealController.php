@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Food;
 use App\FoodLounge;
+use App\Meal;
 use App\RoutinMeal;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\RoutinMealRequest;
 class RoutinMealController extends Controller
 {
     /**
@@ -16,9 +17,7 @@ class RoutinMealController extends Controller
      */
     public function index()
     {
-        $routin_meals = RoutinMeal::with(['meal_type', 'foods'])->paginate(10);
-
-       // return ($routin_meals[1]->foods);
+        $routin_meals = RoutinMeal::with(['meal_type', 'foods', 'foodLounges'])->paginate(10);
         return view('index.v1.pages.routin-meals-index', compact('routin_meals'));
     }
 
@@ -29,10 +28,10 @@ class RoutinMealController extends Controller
      */
     public function create()
     {
-        $meals_type = RoutinMeal::with(['meal_type', 'foods']);
-        $food_lounges = FoodLounge::with(['title', 'foods']);
-        $foods = Food::with(['title', 'foods']);
-        return view('index.v1.pages.routin-meals-create', compact('meals_type', 'food_lounges', 'foods'));
+        $meal_types = Meal::all();
+        $food_lounges = FoodLounge::all();
+        $foods = Food::all();
+        return view('index.v1.pages.routin-meals-create', compact('meal_types', 'food_lounges', 'foods'));
     }
 
 
@@ -42,9 +41,23 @@ class RoutinMealController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RoutinMealRequest $request)
     {
-        //
+        // todo add a time picker and insert real date
+        try{
+            $routin_meal = RoutinMeal::create($request->all());
+            foreach($request->food_lounges as $food_lounge){
+                $routin_meal->foodLounges()->attach($food_lounge);
+            }
+            foreach($request->foods as $food){
+                $routin_meal->foods()->attach($food);
+            }
+            return redirect()->route('routin-meals.index');
+        }
+        catch(\Exception $e){
+            return redirect()->back();
+        }
+
     }
 
     /**

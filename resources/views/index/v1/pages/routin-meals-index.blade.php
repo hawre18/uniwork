@@ -42,10 +42,18 @@
                                         <td><a href="{{ route('routin-meals.show', $row->id) }}">{{ substr($row->start_date, 0, 20) }} </a></td>
                                         <td><a href="{{ route('routin-meals.show', $row->id) }}">{{ substr($row->end_date, 0, 20) }}</a></td>
                                         <td><a href="{{ route('routin-meals.show', $row->id) }}">{{ substr($row->meal_type->title, 0, 20) }}</a></td>
-                                        {{--<td><a href="{{ route('routin-meals.show', $row->id) }}">{{ substr($row->food_lounge->title, 0, 20) }}</a></td>
-                                        <td><a href="{{ route('routin-meals.show', $row->id) }}">{{ substr($row->food->title, 0, 20) }}</a></td>--}}
-                                        <td>{{ $row->created_at }}</td>
-                                        <td>{{ $row->updated_at}}</td>
+                                        <td><a href="{{ route('routin-meals.show', $row->id) }}">
+                                                @foreach($row->foodLounges as $food_lounge)
+                                                    {{ substr($food_lounge->title, 0, 20) }} -
+                                                @endforeach
+                                            </a>
+                                        </td>
+                                        <td><a href="{{ route('routin-meals.show', $row->id) }}">
+                                                @foreach($row->foods as $food)
+                                                    {{ substr($food->title, 0, 20) }} -
+                                                @endforeach
+                                            </a>
+                                        </td>
                                         <td>
                                             <a href="{{action('RoutinMealController@edit',$row['id'])}}" class="btn tblActnBtn"><i class="material-icons">mode_edit</i></a>
                                             <a href="{{ route('routin-meals.delete', $row->id)}}" class="btn tblActnBtn"><i class="material-icons">mode_delete</i></a>
