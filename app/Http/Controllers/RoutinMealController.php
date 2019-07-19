@@ -66,10 +66,11 @@ class RoutinMealController extends Controller
      * @param  \App\RoutinMeal  $routinMeal
      * @return \Illuminate\Http\Response
      */
-    public function show(RoutinMeal $routinMeal)
+    public function show(RoutinMeal $routin_meal)
     {
-        //
+        return view('index.v1.pages.routin-meals-show', compact('routin_meal'));
     }
+
 
     /**
      * Show the form for editing the specified resource.

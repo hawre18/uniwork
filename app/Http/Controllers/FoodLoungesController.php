@@ -55,7 +55,7 @@ class FoodLoungesController extends Controller
      */
     public function show(FoodLounge $food_lounge)
     {
-        return view('index.v1.pages.food-lounges-show');
+        return view('index.v1.pages.food-lounges-show', compact('food_lounge'));
     }
 
     /**
