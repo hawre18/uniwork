@@ -20,21 +20,12 @@
                     <a href="{{ route('routin-meals.create') }}"> رکورد جدید</a>
                     <i class="material-icons">add</i>
                 </div>
-
+<!-- todo -->
                                     <input type="text" id="title" value="{{ $routin_meal->start_date }}"/> <br>
                                     <input type="text" id="title" value="{{ $routin_meal->end_date }}"/> <br>
                                     <input type="text" id="title" value="{{ $routin_meal->meal_type->title }}"/> <br>
                                     <input type="text" id="title" value="{{ $routin_meal->foodLounges[0]->title }}"/> <br>
                                     <input type="text" id="title" value="{{ $routin_meal->foods[0]->title }}"/> <br>
-
-
-
-
-
-
-
-
-
             </div>
         </div>
         <!-- #END# Task Info -->

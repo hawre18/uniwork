@@ -20,6 +20,6 @@ Route::resource('profiles', 'ProfileController');
 Route::resource('majors', 'MajorController');
 Route::get('majors-delete/{id}', 'MajorController@delete')->name('majors.delete');
 Route::resource('meals', 'MealController');
-Route::get('meals/{id}', 'MealController@delete')->name('meals.delete');
+Route::get('meals-delete/{id}', 'MealController@delete')->name('meals.delete');
 Route::resource('routin-meals', 'RoutinMealController');
-Route::get('routin-meals/{id}', 'RoutinMealController@delete')->name('routin-meals.delete');
+Route::get('routin-meals-delete/{id}', 'RoutinMealController@delete')->name('routin-meals.delete');

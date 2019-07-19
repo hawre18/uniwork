@@ -17,9 +17,9 @@
                                     <i class="fas fa-home"></i> خانه</a>
                             </li>
                             <li class="breadcrumb-item bcrumb-2">
-                                <a href="javascript:void(0);">سلف</a>
+                                <a href="javascript:void(0);">فروشگاه</a>
                             </li>
-                            <li class="breadcrumb-item active">ویرایش غذا</li>
+                            <li class="breadcrumb-item active">محصولات</li>
                         </ul>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
                             <div class="row">
                                 <div class="col-md col-sm">
                                     <div class="product-grid">
-                                        <form method="post" action="{{ route('food-lounges.update', $routin_meal->id)}}">
+                                        <form method="post" action="{{ route('routin-meals.update',$routin_meal->id)}}">
                                             <input type="hidden" name="_method" value="put" />
                                             @csrf
                                             @if ($errors->any())
@@ -40,27 +40,17 @@
                                                     <ul>
                                                         @foreach ($errors->all() as $error)
                                                             <li>{{ $error }}</li>
-                                                       @endforeach
+                                                        @endforeach
                                                     </ul>
                                                 </div>
                                             @endif
-                                            <table>
-                                                <thead>اطلاعات سالن</thead>
-                                                <tr>
-                                                    <th>شناسه</th>
-                                                    <th>تاریخ شروع غذادهی</th>
-                                                    <th>تاریخ پایان غذادهی</th>
-                                                    <th>نوع وعده</th>
-                                                    <th>سالن ارائه کننده</th>
-                                                </tr>
-                                                <tr>
-                                                    <td><input type="date" name="start_date" placeholder="تاریخ شروع غذادهی" value="{{ $routin_meal->title }}" ></td>
-                                                    <td><input type="text" name="end_date" placeholder="تاریخ پایان غذادهی" value="{{ $routin_meal->description }}" ></td>
-                                                    <td><input type="text" name="وعده" placeholder="نوع وعده" value="{{ $routin_meal->description }}" ></td>
-                                                    <td><input type="text" name="سالن" placeholder="سالن ارائه دهنده" value="{{ $routin_meal->description }}" ></td>
-                                                    <td><input type="submit" name="submit" value="ویرایش" class="btn btn-primary waves-effect"></td>
-                                                </tr>
-                                            </table>
+                                            <input type="datetime-local" id="star_date" name="start_date" value="{{ $routin_meal->start_date }}"/> <br>
+                                            <input type="datetime-local" id="end_date" name="end_date" value="{{ $routin_meal->end_date }}"/> <br>
+                                            <input type="text" id="title" value="{{ $routin_meal->meal_type->title }}"/> <br>
+                                            <input type="text" id="title" value="{{ $routin_meal->foodLounges[0]->title }}"/> <br>
+                                            <input type="text" id="title" value="{{ $routin_meal->foods[0]->title }}"/> <br>
+                                            <td><input type="submit" name="submit" value="ویرایش" class="btn btn-primary waves-effect"></td>
+
                                         </form>
                                     </div>
                                 </div>

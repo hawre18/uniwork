@@ -78,9 +78,9 @@ class RoutinMealController extends Controller
      * @param  \App\RoutinMeal  $routinMeal
      * @return \Illuminate\Http\Response
      */
-    public function edit(RoutinMeal $routinMeal)
+    public function edit(RoutinMeal $routin_meal)
     {
-        //
+        return view('index.v1.pages.routin-meals-edit', compact('routin_meal'));
     }
 
     /**
@@ -90,14 +90,27 @@ class RoutinMealController extends Controller
      * @param  \App\RoutinMeal  $routinMeal
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RoutinMeal $routinMeal)
+    public function update(Request $request, $id)
     {
-        //
+
+// todo
+            $routin_meal = RoutinMeal::find($id);
+
+
+
+            $routin_meal->end_date = $request->end_date;
+            $routin_meal->start_date = $request->start_date;
+
+            $routin_meal->save($request->all());
+            return redirect()->route('routin-meals.index');
+
     }
 
-    public function delete()
+    public function delete($id)
     {
-        //
+        $routin_meal = RoutinMeal::find($id);
+        $routin_meal->delete();
+        return redirect()->route('routin-meals.index');
     }
 
     /**
