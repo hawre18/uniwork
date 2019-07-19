@@ -54,8 +54,8 @@
                                                     <th>عملیات</th>
                                                 </tr>
                                                 <tr>
-                                                    <td><input id="start_date" name="start_date" value="{{ old('start_date') }}" type="datetime-local" tabindex="1"  /></td>
-                                                    <td> <input id="end_date" name="end_date" value="{{ old('end_date') }}" type="datetime-local" tabindex="2"  /></td>
+                                                    <td><input id="start_date" class="datepicker" name="start_date" value="{{ old('start_date') }}" type="text" tabindex="1"  /></td>
+                                                    <td> <input id="end_date" class="datepicker" name="end_date" value="{{ old('end_date') }}" type="text" tabindex="2"  /></td>
                                                     <td> <select class="form-control " class="select-dropdown" name="meal_type_id" id="meal_type"   tabindex="3">
                                                             <option selected disabled>انتخاب کنید</option>
                                                             @foreach($meal_types as $meal_type)

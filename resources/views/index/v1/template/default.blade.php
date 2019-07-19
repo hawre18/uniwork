@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/index/v1/js/bundles/materialize-rtl/materialize-rtl.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/index/v1/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/index/v1/css/styles/all-themes.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/index/v1/css/persian-datepicker.css') }}">
 
 </head>
 <body class="light menu_dark theme-black logo-white submenu-closed rtl">
@@ -284,6 +285,14 @@
     </div>
     <script src="{{ asset('assets/index/v1/js/app.min.js') }}"></script>
     <script src="{{ asset('assets/index/v1/js/admin.js') }}"></script>
-    @yield('custom_scripts')
+    <script src="{{ asset('assets/index/v1/js/persian-date.min.js') }}"></script>
+    <script src="{{ asset('assets/index/v1/js/persian-datepicker.js') }}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".datepicker").pDatepicker();
+        });
+    </script>
+        @yield('custom_scripts')
 </body>
 </html>
