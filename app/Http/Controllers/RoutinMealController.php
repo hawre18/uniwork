@@ -80,7 +80,11 @@ class RoutinMealController extends Controller
      */
     public function edit(RoutinMeal $routin_meal)
     {
-        return view('index.v1.pages.routin-meals-edit', compact('routin_meal'));
+        $meal_types = Meal::all();
+        $food_lounges = FoodLounge::all();
+        $foods = Food::all();
+        $routin_meal = RoutinMeal::with(['meal_type', 'foods', 'foodLounges'])->find($routin_meal->id);
+        return view('index.v1.pages.routin-meals-edit', compact('meal_types', 'food_lounges', 'foods', 'routin_meal'));
     }
 
     /**
@@ -90,20 +94,12 @@ class RoutinMealController extends Controller
      * @param  \App\RoutinMeal  $routinMeal
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, RoutinMeal $routin_meal)
     {
-
-// todo
-            $routin_meal = RoutinMeal::find($id);
-
-
-
-            $routin_meal->end_date = $request->end_date;
-            $routin_meal->start_date = $request->start_date;
-
-            $routin_meal->save($request->all());
-            return redirect()->route('routin-meals.index');
-
+        $routin_meal->foodLounges()->sync($request->food_lounges);
+        $routin_meal->foods()->sync($request->foods);
+        $routin_meal->update(['start_date'=>$request->start_date, 'end_date'=>$request->end_date]);
+        return redirect()->route('routin-meals.index');
     }
 
     public function delete($id)

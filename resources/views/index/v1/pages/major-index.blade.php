@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="header">
                     <h2>
-                        <strong>جزئیات</strong>غذاها</h2>
+                        <strong>جزئیات</strong>وعده های غذایی</h2>
                     <ul class="header-dropdown m-r--5">
                         <li class="dropdown">
                             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -17,7 +17,7 @@
                     </ul>
                 </div>
                 <div class="new record">
-                    <a href="{{ route('majors.create') }}"> رکورد جدید</a>
+                    <a href="{{ route('routin-meals.create') }}"> رکورد جدید</a>
                     <i class="material-icons">add</i>
                 </div>
                 <div class="tableBody">
@@ -26,22 +26,20 @@
                             <thead>
                             <tr>
                                 <th>شناسه</th>
-                                <th>نام رشته</th>
+                                <th>عنوان رشته</th>
                                 <th>انجام عملیات</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($majors as $row)
-
                                 <tr>
-                                    <td class="table-img">{{ $row->id }}</td>
-                                    <td>{{ $row->title }}</td>
+                                    <td><a href="{{ route('majors.show', $row->id) }}">{{ $loop->index + 1 }}</a></td>
+                                    <td><a href="{{ route('majors.show', $row->id) }}">{{ substr($row->title, 0, 20) }} </a></td>
                                     <td>
-                                        <a href="{{ route('majors.edit', ['row'=> $row->id]) }}" class="btn tblActnBtn"><i class="material-icons">mode_edit</i></a>
+                                        <a href="{{action('MajorController@edit',$row['id'])}}" class="btn tblActnBtn"><i class="material-icons">mode_edit</i></a>
                                         <a href="{{ route('majors.delete', $row->id)}}" class="btn tblActnBtn"><i class="material-icons">mode_delete</i></a>
                                     </td>
                                 </tr>
-
                             @endforeach
 
                             </tbody>
@@ -56,25 +54,4 @@
     </div>
 @endsection
 @section('custom_scripts')
-    <script type="text/javascript">
-        Command: toastr["success"]("Are you the six fingered man?")
-
-        toastr.options = {
-            "closeButton": false,
-            "debug": false,
-            "newestOnTop": false,
-            "progressBar": false,
-            "positionClass": "toast-top-full-width",
-            "preventDuplicates": false,
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        }
-    </script>
 @endsection

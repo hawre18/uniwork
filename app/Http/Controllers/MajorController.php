@@ -25,7 +25,7 @@ class MajorController extends Controller
      */
     public function create()
     {
-        //
+        return view('index.v1.pages.major-create');
     }
 
     /**
@@ -36,7 +36,10 @@ class MajorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $major = new Major();
+        $major->title = $request->title;
+        $major->save();
+        return redirect()->route('majors.index');
     }
 
     /**
@@ -45,9 +48,9 @@ class MajorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Major $major)
     {
-        //
+        return view('index.v1.pages.major-show', compact('major'));
     }
 
     /**
@@ -56,9 +59,9 @@ class MajorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Major $major)
     {
-        //
+        return view('index.v1.pages.major-edit', compact('major'));
     }
 
     /**
@@ -68,19 +71,25 @@ class MajorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Major $major)
     {
-        //
+
+        $major->title = $request->title;
+        $major->save();
+        return redirect()->route('majors.index');
     }
 
+    public function delete($id)
+    {
+        $major = Major::find($id);
+        $major->delete();
+        return redirect()->route('majors.index');
+    }
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
-    {
-        //
-    }
+
 }

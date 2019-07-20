@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="header center">
                     <h2>
-                        <strong >جزئیات</strong>وعده های غذایی<a href="{{ route('routin-meals.create') }}"><i class="material-icons md-36">add_circle_outline</i></a></h2>
+                        <strong >جزئیات</strong>وعده های غذایی<a href="{{ route('majors.create') }}"><i class="material-icons md-36">add_circle_outline</i></a></h2>
                     <ul class="header-dropdown m-r--5">
                         <li class="dropdown">
                             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -18,18 +18,7 @@
                     </ul>
                 </div>
                 <br>
-                <label  id="start_date">تاریخ شروع غذا دهی:<br>{{ $routin_meal->start_date }}</label> <br>
-                <label  id="end_date">تاریخ شروع غذا دهی:<br>{{ $routin_meal->end_date }}</label> <br>
-                <label  id="meal_type">وعده غذایی:<br>{{ $routin_meal->meal_type->title }}</label> <br>
-                <label  id="food_lounge" >سالن های توزیع غذا: <br>
-                    @foreach($routin_meal->foodLounges as $food_lounge)
-                        {{ $food_lounge->title }} -
-                    @endforeach</label> <br>
-                <label  id="food" >غذاها: <br>
-                    @foreach($routin_meal->foods as $food)
-                        {{$food->title}} -
-                    @endforeach
-                </label>
+                <label  id="start_date">عنوان رشته تحصیلی:<br>{{ $major->title }}</label> <br>
             </div>
         </div>
         <!-- #END# Task Info -->
