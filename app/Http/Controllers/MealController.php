@@ -14,8 +14,8 @@ class MealController extends Controller
      */
     public function index()
     {
-        $meals = Meal::with(['routin_meals'])->where('title', 'نهار')->paginate(10);
-        return $meals[0];//->routin_meals;
+        $meals = Meal::paginate(10);
+        return view('index.v1.pages.meal-index')->with(['meals' => $meals]);
     }
 
     /**
@@ -25,7 +25,7 @@ class MealController extends Controller
      */
     public function create()
     {
-        //
+        return view('index.v1.pages.meal-create');
     }
 
     /**
@@ -36,7 +36,10 @@ class MealController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $meals = new Meal();
+        $meals->title = $request->title;
+        $meals->save();
+        return redirect()->route('meals.index');
     }
 
     /**
@@ -45,9 +48,9 @@ class MealController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Meal $meals)
     {
-        //
+        return view('index.v1.pages.meal-show', compact('meals'));
     }
 
     /**
@@ -56,9 +59,9 @@ class MealController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Meal $meal)
     {
-        //
+        return view('index.v1.pages.meal-edit', compact('meal'));
     }
 
     /**
@@ -68,19 +71,18 @@ class MealController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Meal $meal)
     {
-        //
+
+        $meal->title = $request->title;
+        $meal->save();
+        return redirect()->route('meals.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $meals = Meal::find($id);
+        $meals->delete();
+        return redirect()->route('meals.index');
     }
 }
