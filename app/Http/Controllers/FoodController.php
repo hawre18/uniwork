@@ -26,7 +26,7 @@ class FoodController extends Controller
      */
     public function create()
     {
-        return view('index.v1.pages.food-create');
+        return view('index.v1.pages.grade-create');
     }
 
     /**

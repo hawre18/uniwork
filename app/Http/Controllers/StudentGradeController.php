@@ -14,7 +14,8 @@ class StudentGradeController extends Controller
      */
     public function index()
     {
-        //
+        $studentgrade = StudentGrade::paginate(10);
+        return view('index.v1.pages.studentgrade-index')->with(['studentgrade' => $studentgrade]);
     }
 
     /**
@@ -24,7 +25,7 @@ class StudentGradeController extends Controller
      */
     public function create()
     {
-        //
+        return view('index.v1.pages.studentgrade-create');
     }
 
     /**
@@ -33,9 +34,11 @@ class StudentGradeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, StudentGrade $studentgrade)
     {
-        //
+        $studentgrade->title = $request->title;
+        $studentgrade->save();
+        return redirect()->route('studentgrades.index');
     }
 
     /**
@@ -44,9 +47,9 @@ class StudentGradeController extends Controller
      * @param  \App\StudentGrade  $studentGrade
      * @return \Illuminate\Http\Response
      */
-    public function show(StudentGrade $studentGrade)
+    public function show(StudentGrade $studentgrade)
     {
-        //
+        return view('index.v1.pages.studentgrade-show', compact('studentgrade'));
     }
 
     /**
@@ -55,9 +58,9 @@ class StudentGradeController extends Controller
      * @param  \App\StudentGrade  $studentGrade
      * @return \Illuminate\Http\Response
      */
-    public function edit(StudentGrade $studentGrade)
+    public function edit(StudentGrade $studentgrade)
     {
-        //
+        return view('index.v1.pages.studentgrade-edit', compact('studentgrade'));
     }
 
     /**
@@ -67,9 +70,11 @@ class StudentGradeController extends Controller
      * @param  \App\StudentGrade  $studentGrade
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, StudentGrade $studentGrade)
+    public function update(Request $request, StudentGrade $studentgrade)
     {
-        //
+        $studentgrade->title = $request->title;
+        $studentgrade->save();
+        return redirect()->route('studentgrades.index');
     }
 
     /**
@@ -81,5 +86,11 @@ class StudentGradeController extends Controller
     public function destroy(StudentGrade $studentGrade)
     {
         //
+    }
+    public function delete($id)
+    {
+        $studentgrade = StudentGrade::find($id);
+        $studentgrade->delete();
+        return redirect()->route('studentgrades.index');
     }
 }

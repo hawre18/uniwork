@@ -23,3 +23,6 @@ Route::resource('meals', 'MealController');
 Route::get('meals-delete/{id}', 'MealController@delete')->name('meals.delete');
 Route::resource('routin-meals', 'RoutinMealController');
 Route::get('routin-meals-delete/{id}', 'RoutinMealController@delete')->name('routin-meals.delete');
+Route::resource('studentgrades', 'StudentGradeController');
+Route::get('studentgrades-delete/{id}', 'StudentGradeController@delete')->name('studentgrades.delete');
+
