@@ -41,7 +41,7 @@
                                         <td class="table-img">{{ $loop->index + 1 }}</td>
                                         <td><a href="{{ route('routin-meals.show', $row->id) }}">{{ substr($row->start_date, 0, 20) }} </a></td>
                                         <td><a href="{{ route('routin-meals.show', $row->id) }}">{{ substr($row->end_date, 0, 20) }}</a></td>
-                                        <td><a href="{{ route('routin-meals.show', $row->id) }}">{{ substr($row->meal_type->title, 0, 20) }}</a></td>
+                                        <td><a href="{{ route('routin-meals.show', $row->id) }}">{{ substr($row->meal_type['title'], 0, 20) }}</a></td>
                                         <td><a href="{{ route('routin-meals.show', $row->id) }}">
                                                 @foreach($row->foodLounges as $food_lounge)
                                                     {{ substr($food_lounge->title, 0, 20) }} -

@@ -15,10 +15,14 @@ class User extends Authenticatable
      *
      * @var array
      */
+    public $timestamps=false;
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'last_name', 'password','first_name','role_id'
     ];
-
+    public function role()
+    {
+        return $this->belongsTo('App\Role', 'role_id');
+    }
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -36,4 +40,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
 }

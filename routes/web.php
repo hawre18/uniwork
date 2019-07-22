@@ -25,4 +25,7 @@ Route::resource('routin-meals', 'RoutinMealController');
 Route::get('routin-meals-delete/{id}', 'RoutinMealController@delete')->name('routin-meals.delete');
 Route::resource('studentgrades', 'StudentGradeController');
 Route::get('studentgrades-delete/{id}', 'StudentGradeController@delete')->name('studentgrades.delete');
-
+Route::resource('roles', 'RoleController');
+Route::get('roles-delete/{id}', 'RoleController@delete')->name('roles.delete');
+Route::resource('users', 'UserController');
+Route::get('user-delete/{id}', 'UserController@delete')->name('users.delete');
