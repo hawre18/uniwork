@@ -29,3 +29,7 @@ Route::resource('roles', 'RoleController');
 Route::get('roles-delete/{id}', 'RoleController@delete')->name('roles.delete');
 Route::resource('users', 'UserController');
 Route::get('user-delete/{id}', 'UserController@delete')->name('users.delete');
+Route::resource('studententrances', 'StudentEntranceController');
+Route::get('student-entrance-delete/{id}', 'StudentEntranceController@delete')->name('studententrances.delete');
+Route::resource('studentconditions', 'StudentConditionController');
+Route::get('student-condition-delete/{id}', 'StudentConditionController@delete')->name('studentconditions.delete');

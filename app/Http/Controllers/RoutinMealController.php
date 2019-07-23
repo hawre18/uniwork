@@ -96,6 +96,7 @@ class RoutinMealController extends Controller
      */
     public function update(Request $request, RoutinMeal $routin_meal)
     {
+        $routin_meal->update($request->all());
         $routin_meal->foodLounges()->sync($request->food_lounges);
         $routin_meal->foods()->sync($request->foods);
         $routin_meal->update(['start_date'=>$request->start_date, 'end_date'=>$request->end_date]);

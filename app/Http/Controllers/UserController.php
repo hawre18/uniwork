@@ -48,9 +48,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Role $role)
+    public function show(User $user)
     {
-        return view('index.v1.pages.role-show', compact('role'));
+        return view('index.v1.pages.user-show', compact('user'));
     }
 
     /**
@@ -59,9 +59,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Role $role)
+    public function edit(User $user)
     {
-        return view('index.v1.pages.role-edit', compact('role'));
+        $roles = Role::all();
+        $user = User::with(['role'])->find($user->id);
+        return view('index.v1.pages.user-edit', compact('roles','user'));
     }
 
     /**
@@ -71,19 +73,17 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(Request $request, User $user)
     {
 
-        $role->title = $request->title;
-        $role->name = $request->name;
-        $role->save();
-        return redirect()->route('roles.index');
+        $user->update($request->all());
+        return redirect()->route('users.index');
     }
 
     public function delete($id)
     {
-        $role = Role::find($id);
-        $role->delete();
-        return redirect()->route('roles.index');
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->route('users.index');
     }
 }
