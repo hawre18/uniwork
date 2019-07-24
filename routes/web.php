@@ -33,3 +33,7 @@ Route::resource('studententrances', 'StudentEntranceController');
 Route::get('student-entrance-delete/{id}', 'StudentEntranceController@delete')->name('studententrances.delete');
 Route::resource('studentconditions', 'StudentConditionController');
 Route::get('student-condition-delete/{id}', 'StudentConditionController@delete')->name('studentconditions.delete');
+Route::resource('citys', 'CityController');
+Route::get('city-delete/{id}', 'CityController@delete')->name('citys.delete');
+Route::resource('states', 'StateController');
+Route::get('state-delete/{id}', 'StateController@delete')->name('states.delete');
