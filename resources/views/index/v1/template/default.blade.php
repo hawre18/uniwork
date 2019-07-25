@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/index/v1/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/index/v1/css/styles/all-themes.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/index/v1/css/persian-datepicker.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/index/v1/css/file-upload.css') }}">
 
 </head>
 <body class="light menu_dark theme-black logo-white submenu-closed rtl">
@@ -287,10 +288,16 @@
     <script src="{{ asset('assets/index/v1/js/admin.js') }}"></script>
     <script src="{{ asset('assets/index/v1/js/persian-date.min.js') }}"></script>
     <script src="{{ asset('assets/index/v1/js/persian-datepicker.js') }}"></script>
+    <script src="{{ asset('assets/index/v1/js/file-upload.js') }}"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {
             $(".datepicker").pDatepicker();
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.file-upload').file_upload();
         });
     </script>
         @yield('custom_scripts')

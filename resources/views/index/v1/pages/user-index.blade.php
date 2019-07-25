@@ -47,6 +47,7 @@
                                     <td>
                                         <a href="{{action('UserController@edit',$row['id'])}}" class="btn tblActnBtn"><i class="material-icons">mode_edit</i></a>
                                         <a href="{{ route('users.delete', $row->id)}}" class="btn tblActnBtn"><i class="material-icons">mode_delete</i></a>
+                                        <a href="{{ route('profils.create',$row->id)}}" class="btn tblActnBtn"><i class="material-icons">mode_delete</i></a>
                                     </td>
 
                                 </tr>
