@@ -21,9 +21,11 @@ class ProfilController extends Controller
      */
     public function create(Request $request, $id,User $user_id)
     {
+        $citys=City::all();
+        $states=State::all();
         $user_id = User::Find($id);
         $profil = Profil::create(['user_id'=>$request->id]);
-        return view('index.v1.pages.profil-create', compact('user_id'));
+        return view('index.v1.pages.profil-create', compact('user_id','states','citys'));
     }
 
 

@@ -46,36 +46,40 @@
                                             <table>
                                                 <thead>اطلاعات غذا</thead>
                                                 <tr>
-                                                    <th>شروع غذا دهی</th>
-                                                    <th>پایان غذا دهی</th>
-                                                    <th>وعده غذایی</th>
-                                                    <th>سالن غذا خوری</th>
-                                                    <th>غداها</th>
-                                                    <th>غداها</th>
-                                                    <th>غداها</th>
+                                                    <th>عنوان</th>
+                                                    <th>قیمت</th>
+                                                    <th>توضیحات</th>
                                                     <th>عملیات</th>
                                                 </tr>
                                                 <tr>
-                                                   <td><label  id="username">{{$user_id->username }}</label></td>
-                                                   <td><label  id="first_name">{{$user_id->first_name }}</label></td>
-                                                   <td><label  id="last_name">{{$user_id->last_name }}</label></td>
-                                                   <td><form class="form-horizontal">
-                                                           <div class="form-group">
-                                                               <div class="col-sm-offset-2 col-sm-10">
-                                                                   <label class="file-upload btn btn-primary">
-                                                                       Browse for file ... <input type="file" />
-                                                                   </label>
-                                                               </div>
-                                                           </div>
-                                                       </form></td>
-                                                    <td><input id="postcode" name="postcode" value="{{ old('postcode') }}" type="text" tabindex="1"  /></td>
-                                                    <td><div class="radio">
-                                                            <label><input type="radio" name="optradio" checked>Option 1</label>
-                                                        </div></td>
+                                                    <td><label  id="username">{{$user_id->username }}</label></td>
+                                                    <td><label  id="first_name">{{$user_id->first_name }}</label></td>
+                                                    <td><label  id="last_name">{{$user_id->last_name }}</label></td>
+                                                    <td><label  id="last_name">{{$user_id->post_code }}</label></td>
+                                                    <td><label  id="last_name">{{$user_id->job }}</label></td>
+                                                    <td><label  id="last_name">{{$user_id->tell }}</label></td>
+                                                    <td><label  id="last_name">{{$user_id->addr }}</label></td>
+                                                    <td> <select class="form-control " class="select-dropdown" name="state" id="state"   tabindex="3">
+                                                            <option selected disabled>انتخاب کنید</option>
+                                                            @foreach($states as $state)
+                                                                <option value="{{ $state->id }}" @if($state->id == old('$state_id')) selected @endif>{{substr($state->title, 0, 20)}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td> <select class="form-control " class="select-dropdown" name="city" id="city"   tabindex="3">
+                                                            <option selected disabled>انتخاب کنید</option>
+                                                            @foreach($citys as $city)
+                                                                <option value="{{ $city->id }}" @if($city->id == old('city_id')) selected @endif>{{substr($city->title, 0, 20)}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control-file" type="radio" name="gender" value="male" checked/>مرد<br/>
+                                                        <input type="radio" name="gender" value="female"/>زن
+                                                    </td>
                                                     <td><input id="last_name" name="last_name" value="{{ old('last_name') }}" type="text" tabindex="1"  /></td>
-                                                  <td> <input tabindex="6" type="submit" name="submit" value="افزودن" ></td>
+                                                    <td> <input tabindex="6" type="submit" name="submit" value="افزودن" ></td>
                                                 </tr>
-
                                             </table>
                                         </form>
                                     </div>

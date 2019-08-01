@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class RoutinMeal extends Model
 {
-
     protected $fillable = ['start_date', 'end_date', 'meal_type_id'];
     public function meal_type()
     {
@@ -21,6 +20,10 @@ class RoutinMeal extends Model
     public function foodLounges()
     {
         return $this->belongsToMany('App\FoodLounge', 'food_lounge_routin_meals');
+    }
+    public function reservations()
+    {
+        return $this->belongsToMany('App\Reservation', 'reservatin_routin_meals', 'reservation_id', 'routin_meal_id');
     }
 
 

@@ -1,4 +1,17 @@
 <?php
+function upload_files(\Illuminate\Http\Request $request)
+{
+    $image_path = '';
+    if ($request->hasFile('image')) {
+        $upload_require = [
+            'file' => $request->file('image'),
+            'valid_extensions' => ['jpeg', 'png', 'jpg', 'gif', 'svg'],
+            'destination_path' => '/blogs/',
+            'valid_size' => 2,
+        ];
+        $image_path = upload_file($upload_require['file'], $upload_require['valid_extensions'], $upload_require['destination_path'], $upload_require['valid_size']);
+    }
+}
 
 if ( ! function_exists('link_to'))
 {
