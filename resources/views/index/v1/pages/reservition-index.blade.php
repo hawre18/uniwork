@@ -1,5 +1,6 @@
+
 @extends('index.v1.template.default')
-@section('content')
+    @section('content')
     <div class="row center">
         <!-- Task Info -->
         <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 " style="position: absolute;right: 15%;top: 10%;left: 15%;">
@@ -31,27 +32,31 @@
                                 <th>وعده غذایی</th>
                                 <th>سالن غذاخوری</th>
                                 <th>غذا</th>
+                                <th>قیمت</th>
                                 <th>انجام عملیات</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($reservations as $row)
-
-                                <tr>
+                            @foreach($reservations as $row )
+                            <tr>
                                     <td class="table-img">{{ $loop->index + 1 }}</td>
                                     <td><a href="{{ route('reservation.show', $row->id) }}">{{ substr($row->start_date, 0, 20) }} </a></td>
                                     <td><a href="{{ route('reservation.show', $row->id) }}">{{ substr($row->end_date, 0, 20) }}</a></td>
                                     <td><a href="{{ route('reservation.show', $row->id) }}">{{ substr($row->meal_type['title'], 0, 20) }}</a></td>
+                                    <td><a href="{{ route('reservation.show', $row->id) }}">@foreach($row->foods as $food)
+                                                {{$food->price}} -
+                                            </a></td>
+                                <td><a href="{{ route('reservation.show', $row->id) }}">{{ substr($food->title, 0, 20) }}</a></td>
+                                @endforeach
+                                <td><a href="{{ route('reservation.show', $row->id) }}">@foreach($row->foodLounges as $foodLounge)
+                                            {{$foodLounge->title}} -</a></td>
                                     <td>
-                                        <a href="{{action('ReservationController@edit',$row['id'])}}" class="btn tblActnBtn"><i class="material-icons">mode_edit</i></a>
-                                        <a href="{{ route('reservation.delete', $row->id)}}" class="btn tblActnBtn"><i class="material-icons">mode_delete</i></a>
+                                        <a href="{{action('ReservationController@store',$row['id'])}}" class="btn tblActnBtn"><i class="material-icons">restaurant</i></a>
                                     </td>
 
                                 </tr>
-
-
                             @endforeach
-
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

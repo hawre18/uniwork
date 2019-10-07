@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="header center">
                     <h2>
-                        <strong >جزئیات</strong>وعده های غذایی<a href="{{ route('citys.create') }}"><i class="material-icons md-36">add_circle_outline</i></a></h2>
+                        <strong >جزئیات</strong> شهر مورد نظر<a href="{{ route('citys.create') }}"><i class="material-icons md-36">home</i></a></h2>
                     <ul class="header-dropdown m-r--5">
                         <li class="dropdown">
                             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -18,8 +18,8 @@
                     </ul>
                 </div>
                 <br>
-                <label  id="title">شهر :<br>{{ $city->title }}</label> <br>
-                <label  id="meal_type">استان:<br>{{ $city->state_type->title }}</label> <br>
+                <label  id="title">شهر :{{ $city->title }}</label><br>
+                <label  id="meal_type">استان:{{ $city->state_type->title }}</label><br>
             </div>
         </div>
         <!-- #END# Task Info -->

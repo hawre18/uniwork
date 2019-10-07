@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Reservation;
 use App\RoutinMeal;
+use App\Food;
 use Illuminate\Http\Request;
 class ReservationController extends Controller
 {
@@ -13,7 +15,8 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        $reservations = RoutinMeal::with(['reservations'])->paginate(10);
+
+        $reservations = RoutinMeal::with(['reservations', 'foods','foodLounges'])->paginate(10);
         return view('index.v1.pages.reservition-index', compact('reservations'));
     }
 
@@ -24,7 +27,7 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -33,9 +36,14 @@ class ReservationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Reservation $reservation)
     {
-        //
+        $reservation->user_id = $request->title;
+        $reservation->total_price = $request->price;
+        $reservation->res_date = $request->description;
+        $food->save();
+        return redirect()->route('foods.index');
+        return redirect()->route('routin-meals.index');
     }
 
     /**

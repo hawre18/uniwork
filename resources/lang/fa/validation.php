@@ -86,7 +86,7 @@ return [
     'mimes' => 'The :attribute must be a file of type: :values.',
     'mimetypes' => 'The :attribute must be a file of type: :values.',
     'min' => [
-        'فیلد :attribute نمی تواند بیشتر از :max. باشد',
+       'numeric'=> 'فیلد :attribute نمی تواند کمتر از :min. باشد',
         'file' => 'The :attribute must be at least :min kilobytes.',
         'string' => 'فیلد :attribute حداقل باید :min کاراکتر باشد.',
         'array' => 'The :attribute must have at least :min items.',
@@ -149,7 +149,8 @@ return [
     'attributes' => [
         'title' => 'عنوان',
         'description' => 'توضیحات',
-        'price' => 'قیمت'
+        'price' => 'قیمت',
+        'state_id'=>'استان'
     ],
 
 ];

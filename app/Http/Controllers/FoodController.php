@@ -39,7 +39,7 @@ class FoodController extends Controller
     {
         $validatedData = $request->validate([
         'title' => 'required|unique:foods|max:255',
-        'price' => 'required|max:5000|min:1000|numeric',
+        'price' => 'required|max:50000|min:15000|numeric',
         'description' => 'required',
         ]);
         try{
@@ -63,7 +63,7 @@ class FoodController extends Controller
      */
     public function show(Food $food)
     {
-        return $food;
+        return view('index.v1.pages.food-show', compact('food'));
     }
 
     /**
@@ -89,7 +89,7 @@ class FoodController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|unique:foods,title,' . $id .'|max:255',
-            'price' => 'required|max:5000|min:1000|numeric',
+            'price' => 'required|max:50000|min:15000|numeric',
             'description' => 'required',
         ]);
         try{

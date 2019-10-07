@@ -39,7 +39,10 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
-
+        $validatedData = $request->validate([
+            'title' => 'required|unique:cities|max:255',
+            'state_id' => 'required',
+        ]);
             $city = City::create($request->all());
             return redirect()->route('citys.index');
 
@@ -63,7 +66,7 @@ class CityController extends Controller
      * @param  \App\RoutinMeal  $routinMeal
      * @return \Illuminate\Http\Response
      */
-    public function edit(City $city)
+    public function edit( Request $request, City $city)
     {
         $states_type = State::all();
         $city = City::with(['state_type'])->find($city->id);
@@ -79,6 +82,10 @@ class CityController extends Controller
      */
     public function update(Request $request, City $city)
     {
+        $validatedData = $request->validate([
+            'title' => 'required|unique:cities,title,' . $city->id .'|max:255',
+            'state_id' => 'required',
+        ]);
         $city->update($request->all());
         return redirect()->route('citys.index');
     }

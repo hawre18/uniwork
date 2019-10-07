@@ -45,7 +45,7 @@
                                                 </div>
                                             @endif
                                             <table>
-                                                <thead>اطلاعات غذا</thead>
+                                                <thead>ویرایش اطلاعات شهرها</thead>
                                                 <tr>
                                                     <th>شهر</th>
                                                     <th>استان</th>
@@ -60,7 +60,7 @@
                                                             @endforeach
                                                         </select>
                                                     </td>
-                                                    <td> <input tabindex="6" type="submit" name="submit" value="ویرایش" ></td>
+                                                    <td> <input tabindex="6" type="submit" name="submit" value="ویرایش" class="btn btn-primary waves-effect"></td>
                                                 </tr>
 
                                             </table>

@@ -45,7 +45,7 @@
                                                 </div>
                                             @endif
                                             <table>
-                                                <thead>اطلاعات غذا</thead>
+                                                <thead>ویرایش غذا</thead>
                                                 <tr>
                                                     <th>عنوان</th>
                                                     <th>قیمت</th>

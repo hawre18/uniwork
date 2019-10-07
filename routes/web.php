@@ -42,3 +42,11 @@ Route::get('profil-store', 'ProfilController@store')->name('profils.store');
 Route::get('profil-delete/{id}', 'ProfilController@delete')->name('profils.delete');
 Route::resource('reservation', 'ReservationController');
 Route::get('reservation-delete/{id}', 'ReservationController@delete')->name('reservation.delete');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

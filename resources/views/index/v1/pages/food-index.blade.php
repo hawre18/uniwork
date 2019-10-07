@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="header">
                     <h2>
-                        <strong>جزئیات</strong>غذاها</h2>
+                        <strong>لیست</strong>غذاها</h2>
                     <ul class="header-dropdown m-r--5">
                         <li class="dropdown">
                             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -25,28 +25,24 @@
                         <table class="table table-hover dashboard-task-infos ">
                             <thead>
                             <tr>
-                                <th>شناسه</th>
+                                <th>ردیف</th>
                                 <th>نام غذا</th>
                                 <th>قیمت</th>
                                 <th>توضیحات</th>
-                                <th>تاریخ ایجاد</th>
-                                <th>تاریخ آخرین ویرایش</th>
                                 <th>انجام عملیات</th>
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach($foods as $food)
+                                @foreach($foods as $row)
 
                                     <tr>
-                                        <td class="table-img">{{ $food->id }}</td>
-                                        <td>{{ $food->title }}</td>
-                                        <td>{{ $food->price }}</td>
-                                        <td>{{ $food->description }}</td>
-                                        <td>{{ $food->created_at }}</td>
-                                        <td>{{ $food->updated_at}}</td>
+                                        <td><a href="{{ route('foods.show', $row->id) }}">{{ $loop->index + 1 }}</a></td>
+                                        <td><a href="{{ route('foods.show', $row->id) }}">{{ $row->title }}</a></td>
+                                        <td><a href="{{ route('foods.show', $row->id) }}">{{ $row->price }}</a></td>
+                                        <td><a href="{{ route('foods.show', $row->id) }}">{{ $row->description }}</a></td>
                                         <td>
-                                                <a href="{{ route('foods.edit', ['food'=> $food->id]) }}" class="btn tblActnBtn"><i class="material-icons">mode_edit</i></a>
-                                                <a href="{{ route('foods.delete', $food->id)}}" class="btn tblActnBtn"><i class="material-icons">mode_delete</i></a>
+                                                <a href="{{ route('foods.edit', ['food'=> $row->id]) }}" class="btn tblActnBtn"><i class="material-icons">mode_edit</i></a>
+                                                <a href="{{ route('foods.delete', $row->id)}}" class="btn tblActnBtn"><i class="material-icons">mode_delete</i></a>
                                         </td>
                                     </tr>
 
