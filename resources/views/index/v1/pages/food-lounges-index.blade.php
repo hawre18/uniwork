@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="header">
                     <h2>
-                        <strong>جزئیات</strong>سالن ها</h2>
+                        <strong>لیست</strong>سالن ها</h2>
                     <ul class="header-dropdown m-r--5">
                         <li class="dropdown">
                             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -25,34 +25,24 @@
                         <table class="table table-hover dashboard-task-infos ">
                             <thead>
                             <tr>
-                                <th>شناسه</th>
+                                <th>ردیف</th>
                                 <th>نام سالن</th>
                                 <th>توضیحات</th>
-                                <th>تاریخ ایجاد</th>
-                                <th>تاریخ آخرین ویرایش</th>
                                 <th>انجام عملیات</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($food_lounges as $row)
-
-
                                     <tr>
                                         <td class="table-img">{{ $loop->index + 1 }}</td>
                                         <td><a href="{{ route('food-lounges.show', $row->id) }}">{{ substr($row->title, 0, 20) }} </a></td>
                                         <td><a href="{{ route('food-lounges.show', $row->id) }}">{{ substr($row->description, 0, 20) }}</a></td>
-                                        <td>{{ $row->created_at }}</td>
-                                        <td>{{ $row->updated_at}}</td>
                                         <td>
                                             <a href="{{action('FoodLoungesController@edit',$row['id'])}}" class="btn tblActnBtn"><i class="material-icons">mode_edit</i></a>
                                             <a href="{{ route('food-lounges.delete', $row->id)}}" class="btn tblActnBtn"><i class="material-icons">mode_delete</i></a>
                                         </td>
-
                                     </tr>
-
-
                             @endforeach
-
                             </tbody>
                         </table>
                     </div>

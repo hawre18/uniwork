@@ -34,10 +34,13 @@ class FoodLoungesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(FoodLoungeRequest $request)
+    public function store(FoodLoungeRequest $request, FoodLounge $food_lounge)
     {
+        $validatedData = $request->validate([
+            'title' => 'required|unique:food_lounges|max:255|min:3',
+            'description' => 'required|min:3',
+        ]);
         try{
-            $food_lounge = new FoodLounge();
             $food_lounge->title = $request->title;
             $food_lounge->description = $request->description;
             $food_lounge->save();
@@ -81,7 +84,7 @@ class FoodLoungesController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|unique:food_lounges,title,' .$food_lounge->id .'|max:255|min:3',
-            'description' => 'required|min:3',
+            'description' => 'required|min:3|max:255',
         ]);
         try{
             $food_lounge->title = $request->title;
@@ -89,7 +92,7 @@ class FoodLoungesController extends Controller
             $food_lounge->save();
             return redirect()->route('food-lounges.index');
         } catch (\Exception $e){
-            return 'خطا'.$e;
+            return 'خطا: ' . $e->getMessage();
         }
     }
 

@@ -35,7 +35,7 @@ class FoodController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(FoodRequest $request)
+    public function store(FoodRequest $request,Food $food)
     {
         $validatedData = $request->validate([
         'title' => 'required|unique:foods|max:255',
@@ -43,7 +43,6 @@ class FoodController extends Controller
         'description' => 'required',
         ]);
         try{
-            $food = new Food;
             $food->title = $request->title;
             $food->price = $request->price;
             $food->description = $request->description;

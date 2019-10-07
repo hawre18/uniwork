@@ -43,8 +43,12 @@ class CityController extends Controller
             'title' => 'required|unique:cities|max:255',
             'state_id' => 'required',
         ]);
+        try {
             $city = City::create($request->all());
             return redirect()->route('citys.index');
+        }catch (\Exception $e) {
+            return 'خطا: ' . $e->getMessage();
+        }
 
     }
 
@@ -86,8 +90,14 @@ class CityController extends Controller
             'title' => 'required|unique:cities,title,' . $city->id .'|max:255',
             'state_id' => 'required',
         ]);
+        try
+        {
         $city->update($request->all());
         return redirect()->route('citys.index');
+        }
+        catch (\Exception $e){
+            return 'خطا: ' . $e->getMessage();
+        }
     }
 
     public function delete($id)

@@ -19,7 +19,7 @@
                             <li class="breadcrumb-item bcrumb-2">
                                 <a href="javascript:void(0);">سلف</a>
                             </li>
-                            <li class="breadcrumb-item active">ویرایش غذا</li>
+                            <li class="breadcrumb-item active">ویرایش اطلاعات سالن غذاخوری</li>
                         </ul>
                     </div>
                 </div>
