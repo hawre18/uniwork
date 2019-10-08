@@ -25,8 +25,8 @@
                         <table class="table table-hover dashboard-task-infos ">
                             <thead>
                             <tr>
-                                <th>شناسه</th>
-                                <th>عنوان رشته</th>
+                                <th>ردیف</th>
+                                <th>عنوان وعده غذایی</th>
                                 <th>انجام عملیات</th>
                             </tr>
                             </thead>

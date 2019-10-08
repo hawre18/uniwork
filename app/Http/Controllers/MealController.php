@@ -34,12 +34,18 @@ class MealController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Meal $meals)
     {
-        $meals = new Meal();
+        $validatedData = $request->validate([
+            'title' => 'required|unique:meals|max:255|min:3',
+        ]);
+        try{
         $meals->title = $request->title;
         $meals->save();
-        return redirect()->route('meals.index');
+        return redirect()->route('meals.index');}
+        catch (\Exception $e){
+            return 'خطا'.$e;
+        }
     }
 
     /**
@@ -48,9 +54,9 @@ class MealController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Meal $meals)
+    public function show(Meal $meal)
     {
-        return view('index.v1.pages.meal-show', compact('meals'));
+        return view('index.v1.pages.meal-show', compact('meal'));
     }
 
     /**
@@ -73,10 +79,16 @@ class MealController extends Controller
      */
     public function update(Request $request, Meal $meal)
     {
-
+        $validatedData = $request->validate([
+            'title' => 'required|unique:meals,title,' . $meal->id .'|max:255|min:3',
+        ]);
+        try{
         $meal->title = $request->title;
         $meal->save();
-        return redirect()->route('meals.index');
+        return redirect()->route('meals.index');}
+        catch (\Exception $e){
+            return 'خطا'.$e;
+        }
     }
 
     public function delete($id)

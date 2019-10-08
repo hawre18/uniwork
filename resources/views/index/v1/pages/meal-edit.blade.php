@@ -45,14 +45,14 @@
                                                 </div>
                                             @endif
                                             <table>
-                                                <thead>اطلاعات غذا</thead>
+                                                <thead>ویرایش وعده غدایی</thead>
                                                 <tr>
-                                                    <th>عنوان رشته</th>
+                                                    <th>عنوان</th>
                                                     <th>عملیات</th>
                                                 </tr>
                                                 <tr>
                                                     <td><input id="title" name="title" class="" value="{{$meal->title }}" type="text" tabindex="1"  /></td>
-                                                    <td> <input tabindex="6" type="submit" name="submit" value="ویرایش" ></td>
+                                                    <td> <input tabindex="6" type="submit" name="submit" value="ویرایش" class="btn btn-primary waves-effect"></td>
                                                 </tr>
 
                                             </table>

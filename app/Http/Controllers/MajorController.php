@@ -34,12 +34,18 @@ class MajorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Major $major)
     {
-        $major = new Major();
+        $validatedData = $request->validate([
+            'title' => 'required|unique:majors|max:255|min:3',
+        ]);
+        try{
         $major->title = $request->title;
         $major->save();
-        return redirect()->route('majors.index');
+        return redirect()->route('majors.index');}
+        catch (\Exception $e){
+            return 'خطا'.$e;
+        }
     }
 
     /**
@@ -73,10 +79,16 @@ class MajorController extends Controller
      */
     public function update(Request $request, Major $major)
     {
-
+        $validatedData = $request->validate([
+            'title' => 'required|unique:majors,title,' . $major->id .'|max:255|min:3',
+        ]);
+        try{
         $major->title = $request->title;
         $major->save();
-        return redirect()->route('majors.index');
+        return redirect()->route('majors.index');}
+        catch (\Exception $e){
+            return 'خطا'.$e;
+        }
     }
 
     public function delete($id)

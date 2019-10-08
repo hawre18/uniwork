@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="header center">
                     <h2>
-                        <strong >جزئیات</strong>وعده های غذایی<a href="{{ route('majors.create') }}"><i class="material-icons md-36">add_circle_outline</i></a></h2>
+                        <strong >جزئیات </strong>وعده های غذایی<a href="{{ route('meals.index') }}"><i class="material-icons md-36">add_circle_outline</i></a></h2>
                     <ul class="header-dropdown m-r--5">
                         <li class="dropdown">
                             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -18,7 +18,7 @@
                     </ul>
                 </div>
                 <br>
-                <label  id="start_date">عنوان رشته تحصیلی:<br>{{ $major->title }}</label> <br>
+                <label id="title">وعده غذایی: {{$meal->title}}</label><br>
             </div>
         </div>
         <!-- #END# Task Info -->

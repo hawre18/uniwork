@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="header">
                     <h2>
-                        <strong>جزئیات</strong>وعده های غذایی</h2>
+                        <strong>لیست</strong> رشته های تحصیلی</h2>
                     <ul class="header-dropdown m-r--5">
                         <li class="dropdown">
                             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -17,7 +17,7 @@
                     </ul>
                 </div>
                 <div class="new record">
-                    <a href="{{ route('routin-meals.create') }}"> رکورد جدید</a>
+                    <a href="{{ route('majors.create') }}"> رکورد جدید</a>
                     <i class="material-icons">add</i>
                 </div>
                 <div class="tableBody">
@@ -25,7 +25,7 @@
                         <table class="table table-hover dashboard-task-infos ">
                             <thead>
                             <tr>
-                                <th>شناسه</th>
+                                <th>ردیف</th>
                                 <th>عنوان رشته</th>
                                 <th>انجام عملیات</th>
                             </tr>
