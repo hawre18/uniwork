@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="header">
                     <h2>
-                        <strong>جزئیات</strong>غذاها</h2>
+                        <strong>لیست </strong>مقطع</h2>
                     <ul class="header-dropdown m-r--5">
                         <li class="dropdown">
                             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -25,8 +25,8 @@
                         <table class="table table-hover dashboard-task-infos ">
                             <thead>
                             <tr>
-                                <th>شناسه</th>
-                                <th>نام غذا</th>
+                                <th>ردیف</th>
+                                <th>مقطع</th>
                                 <th>انجام عملیات</th>
                             </tr>
                             </thead>
@@ -34,7 +34,7 @@
                                 @foreach($studentgrade as $row)
 
                                     <tr>
-                                        <td class="table-img"><a href="{{ route('studentgrades.show', $row->id) }}">{{ $row->id }}</a></td>
+                                        <td class="table-img"><a href="{{ route('studentgrades.show', $row->id) }}">{{ $loop->index + 1 }}</a></td>
                                         <td><a href="{{ route('studentgrades.show', $row->id) }}">{{ $row->title }}</a></td>
                                         <td>
                                                 <a href="{{ route('studentgrades.edit', ['studentgrade'=> $row->id]) }}" class="btn tblActnBtn"><i class="material-icons">mode_edit</i></a>

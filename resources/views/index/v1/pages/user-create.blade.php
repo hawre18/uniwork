@@ -44,14 +44,14 @@
                                                 </div>
                                             @endif
                                             <table>
-                                                <thead>اطلاعات غذا</thead>
+                                                <thead>ایجاد حساب کاربری</thead>
                                                 <tr>
-                                                    <th>شروع غذا دهی</th>
-                                                    <th>پایان غذا دهی</th>
-                                                    <th>وعده غذایی</th>
-                                                    <th>سالن غذا خوری</th>
-                                                    <th>غداها</th>
-                                                    <th>عملیات</th>
+                                                    <th>شناسه کاربری</th>
+                                                    <th>رمزعبور</th>
+                                                    <th>نام</th>
+                                                    <th>نام خانوادگی</th>
+                                                    <th>سمت</th>
+                                                    <th>انجام عملیات</th>
                                                 </tr>
                                                 <tr>
                                                     <td><input id="username" name="username" value="{{ old('username') }}" type="text" tabindex="1"  /></td>
@@ -65,7 +65,7 @@
                                                             @endforeach
                                                         </select>
                                                     </td>
-                                                    <td> <input tabindex="6" type="submit" name="submit" value="افزودن" ></td>
+                                                    <td> <input tabindex="6" type="submit" name="submit" value="افزودن" class="btn btn-primary waves-effect"></td>
                                                 </tr>
 
                                             </table>

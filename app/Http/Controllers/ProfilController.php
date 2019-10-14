@@ -7,11 +7,14 @@ use App\Profil;
 use App\State;
 use App\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProfilRequest;
 
 class ProfilController extends Controller
 {
     public function index()
     {
+        $profils = Profil::with(['state_type', 'city_type','user'])->paginate(10);
+        return view('index.v1.pages.profil-index', compact('profils'));
     }
 
     /**
@@ -35,13 +38,17 @@ class ProfilController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(ProfilRequest $request)
     {
-
-
+        $profil = Profil::create($request->all());
+        foreach ($request->states as $state) {
+            $profil->state_type()->attach($state);
+        }
+        foreach (citys as $city) {
+            $profil->citys()->attach($city);
+        }
 
     }
-
     /**
      * Display the specified resource.
      *

@@ -11,5 +11,9 @@ class State extends Model
     {
         return $this->hasMany('App\City', 'state_id');
     }
+    public function profil()
+    {
+        return $this->hasMany('App\Profil', 'state_id');
+    }
 }
 

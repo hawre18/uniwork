@@ -36,9 +36,19 @@ class StudentGradeController extends Controller
      */
     public function store(Request $request, StudentGrade $studentgrade)
     {
+        $validatedData = $request->validate([
+            'title' => 'required|unique:student_grades|max:255|min:3',
+        ]);
+        try
+        {
         $studentgrade->title = $request->title;
         $studentgrade->save();
         return redirect()->route('studentgrades.index');
+            return redirect()->route('citys.index');
+        }
+        catch (\Exception $e){
+            return 'خطا: ' . $e->getMessage();
+        }
     }
 
     /**
@@ -72,9 +82,18 @@ class StudentGradeController extends Controller
      */
     public function update(Request $request, StudentGrade $studentgrade)
     {
+        $validatedData = $request->validate([
+            'title' => 'required|unique:student_grades,title,' . $studentgrade->id .'|max:255|min:3',
+        ]);
+        try
+        {
         $studentgrade->title = $request->title;
         $studentgrade->save();
         return redirect()->route('studentgrades.index');
+        }
+        catch (\Exception $e){
+            return 'خطا: ' . $e->getMessage();
+        }
     }
 
     /**

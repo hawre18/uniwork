@@ -2331,9 +2331,9 @@ textarea {
 }
 
 [type="checkbox"],
-[type="radio"] {
+[ype="radio"] {
 	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
+	boxt-sizing: border-box;
 	padding: 0
 }
 

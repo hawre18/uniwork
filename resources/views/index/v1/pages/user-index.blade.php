@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="header">
                     <h2>
-                        <strong>جزئیات</strong>وعده های غذایی</h2>
+                        <strong>لیست </strong>کاربران</h2>
                     <ul class="header-dropdown m-r--5">
                         <li class="dropdown">
                             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -25,12 +25,12 @@
                         <table class="table table-hover dashboard-task-infos ">
                             <thead>
                             <tr>
-                                <th>شناسه</th>
-                                <th>عنوان</th>
-                                <th>جایگاه</th>
-                                <th>جایگاه</th>
-                                <th>جایگاه</th>
-                                <th>جایگاه</th>
+                                <th>ردیف</th>
+                                <th>شناسه کاربری</th>
+                                <th>رمزعبور</th>
+                                <th>نام</th>
+                                <th>نام خانوادگی</th>
+                                <th>سمت</th>
                                 <th>انجام عملیات</th>
                             </tr>
                             </thead>
@@ -47,7 +47,7 @@
                                     <td>
                                         <a href="{{action('UserController@edit',$row['id'])}}" class="btn tblActnBtn"><i class="material-icons">mode_edit</i></a>
                                         <a href="{{ route('users.delete', $row->id)}}" class="btn tblActnBtn"><i class="material-icons">mode_delete</i></a>
-                                        <a href="{{ route('profils.create',$row->id)}}" class="btn tblActnBtn"><i class="material-icons">mode_delete</i></a>
+                                        <a href="{{ route('profils.create',$row->id)}}" class="btn tblActnBtn"><i class="material-icons">person</i></a>
                                     </td>
 
                                 </tr>

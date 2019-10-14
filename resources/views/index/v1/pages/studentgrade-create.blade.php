@@ -44,14 +44,14 @@
                                                 </div>
                                             @endif
                                             <table>
-                                                <thead>اطلاعات غذا</thead>
+                                                <thead>ایجاد مقطع تحصیلی</thead>
                                                 <tr>
                                                     <th>عنوان</th>
                                                     <th>عملیات</th>
                                                 </tr>
                                                 <tr>
                                                     <td><input type="text" name="title" placeholder="غذا" value="{{ old('title') }}" ></td>
-                                                    <td><input type="submit" name="submit" value="درج" class="btn btn-primary waves-effect"></td>
+                                                    <td><input type="submit" name="submit" value="افزودن" class="btn btn-primary waves-effect"></td>
                                                 </tr>
                                             </table>
                                         </form>

@@ -45,7 +45,7 @@
                                                 </div>
                                             @endif
                                             <table>
-                                                <thead>اطلاعات غذا</thead>
+                                                <thead>ویرایش مقطع تحصیلی</thead>
                                                 <tr>
                                                     <th>عنوان</th>
                                                 </tr>

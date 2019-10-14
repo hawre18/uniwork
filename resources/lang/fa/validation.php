@@ -18,7 +18,7 @@ return [
     'active_url' => 'The :attribute is not a valid URL.',
     'after' => 'The :attribute must be a date after :date.',
     'after_or_equal' => 'The :attribute must be a date after or equal to :date.',
-    'alpha' => 'The :attribute may only contain letters.',
+    'alpha' => 'فیلد :attribute فقط حروف الفبا قبول میکند.',
     'alpha_dash' => 'The :attribute may only contain letters, numbers, dashes and underscores.',
     'alpha_num' => 'The :attribute may only contain letters and numbers.',
     'array' => 'The :attribute must be an array.',
@@ -51,7 +51,7 @@ return [
         'array' => 'The :attribute must have more than :value items.',
     ],
     'gte' => [
-        'numeric' => 'فیلد :attribute نمی تواند بیشتر از :max. باشد',
+        'numeric' => 'فیلد :attribute باید عددی باشد',
         'file' => 'The :attribute must be greater than or equal :value kilobytes.',
         'string' => 'The :attribute must be greater than or equal :value characters.',
         'array' => 'The :attribute must have :value items or more.',
@@ -150,7 +150,12 @@ return [
         'title' => 'عنوان',
         'description' => 'توضیحات',
         'price' => 'قیمت',
-        'state_id'=>'استان'
+        'state_id'=>'استان',
+        'role_id'=>'سمت',
+        'username'=>'نام کاربری',
+        'password'=>'کلمه عبور',
+        'first_name'=>'نام',
+        'last_name'=>'نام خانوادگی',
     ],
 
 ];

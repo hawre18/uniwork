@@ -49,7 +49,6 @@ class CityController extends Controller
         }catch (\Exception $e) {
             return 'خطا: ' . $e->getMessage();
         }
-
     }
 
     /**

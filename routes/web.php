@@ -36,9 +36,11 @@ Route::get('student-condition-delete/{id}', 'StudentConditionController@delete')
 Route::resource('citys', 'CityController');
 Route::get('city-delete/{id}', 'CityController@delete')->name('citys.delete');
 Route::resource('states', 'StateController');
+//Route::resource('profils', 'ProfilController');
+//Route::get('profils', 'ProfilController@index');
 Route::get('state-delete/{id}', 'StateController@delete')->name('states.delete');
 Route::get('profil-create/{id}', 'ProfilController@create')->name('profils.create');
-Route::get('profil-store', 'ProfilController@store')->name('profils.store');
+Route::post('profil-store', 'ProfilController@store')->name('profils.store');
 Route::get('profil-delete/{id}', 'ProfilController@delete')->name('profils.delete');
 Route::resource('reservation', 'ReservationController');
 Route::get('reservation-delete/{id}', 'ReservationController@delete')->name('reservation.delete');

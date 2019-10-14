@@ -36,10 +36,18 @@ class StudentEntranceController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+        'title' => 'required|unique:student_entrances|max:255|min:3',
+    ]);
+        try {
         $studententrances = new StudentEntrance();
         $studententrances->title = $request->title;
         $studententrances->save();
         return redirect()->route('studententrances.index');
+        }catch (\Exception $e) {
+            return 'خطا: ' . $e->getMessage();
+        }
+
     }
 
     /**
@@ -73,10 +81,18 @@ class StudentEntranceController extends Controller
      */
     public function update(Request $request, StudentEntrance $studententrance)
     {
-
+        $validatedData = $request->validate([
+            'title' => 'required|unique:student_entrances,title,' . $studententrance->id .'|max:255|min:3',
+        ]);
+        try
+        {
         $studententrance->title = $request->title;
         $studententrance->save();
         return redirect()->route('studententrances.index');
+        }
+        catch (\Exception $e){
+            return 'خطا: ' . $e->getMessage();
+        }
     }
 
     public function delete($id)

@@ -38,6 +38,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'username' => 'required|unique:users|numeric',
+            'password' => 'required|unique:users|numeric',
+            'first_name' => 'required|max:255|min:3|alpha',
+            'last_name' => 'required|max:255|min:3|alpha',
+            'role_id' => 'required',
+        ]);
         $user = User::create($request->all());
         return redirect()->route('users.index');
     }
@@ -59,8 +66,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Request $request,User $user)
     {
+
         $roles = Role::all();
         $user = User::with(['role'])->find($user->id);
         return view('index.v1.pages.user-edit', compact('roles','user'));
@@ -75,7 +83,13 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-
+        $validatedData = $request->validate([
+            'username' => 'required|unique:users,username,'.$user->id.'|numeric',
+            'password' => 'required|unique:users,password,'.$user->id.'|numeric',
+            'first_name' => 'required|max:255|min:3|alpha',
+            'last_name' => 'required|max:255|min:3|alpha',
+            'role_id' => 'required',
+        ]);
         $user->update($request->all());
         return redirect()->route('users.index');
     }

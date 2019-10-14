@@ -12,5 +12,9 @@ class City extends Model
     {
         return $this->belongsTo('App\State', 'state_id');
     }
+    public function profil()
+    {
+        return $this->belongsTo('App\State', 'city_id');
+    }
 
 }

@@ -45,7 +45,7 @@
                                                 </div>
                                             @endif
                                             <table>
-                                                <thead>اطلاعات غذا</thead>
+                                                <thead>ویرایش اطلاعات کاربری</thead>
                                                 <tr>
                                                     <th>نام کاربری</th>
                                                     <th>کلمه عبور</th>
@@ -66,7 +66,7 @@
                                                     </td>
                                                     <td> <input id="first_name" name="first_name" value="{{ old('first_name') ?? $user->first_name }}" type="text" tabindex="2"  /></td>
                                                     <td> <input id="last_name" name="last_name" value="{{ old('last_name') ?? $user->last_name }}" type="text" tabindex="2"  /></td>
-                                                    <td> <input tabindex="6" type="submit" name="submit" value="ویرایش" ></td>
+                                                    <td> <input tabindex="6" type="submit" name="submit" value="ویرایش" class="btn btn-primary waves-effect"></td>
                                                 </tr>
 
                                             </table>

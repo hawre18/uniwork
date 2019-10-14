@@ -28,4 +28,3 @@
     </div>
 @endsection
 @section('custom_scripts')
-@endsection
